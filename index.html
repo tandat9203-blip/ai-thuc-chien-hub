@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Thực Chiến Hub - Kho Prompt & Workflow Tự Động Hóa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #09090b; color: #f4f4f5; }
+    .glass { background: rgba(24, 24, 27, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .card-hover { transition: all 0.25s ease; }
+    .card-hover:hover { transform: translateY(-4px); border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15); }
+  </style>
+</head>
+<body class="selection:bg-emerald-500 selection:text-black">
+
+  <!-- Background Glow -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none -z-10"></div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 glass border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2 font-bold text-lg tracking-tight">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-black font-extrabold">AI</span>
+        <span>Học AI Thực Chiến</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-400">
+        <a href="#prompts" class="hover:text-white transition">Kho Prompt</a>
+        <a href="#workflows" class="hover:text-white transition">Bộ Công Cụ</a>
+        <a href="#academy" class="hover:text-white transition">Khóa Học</a>
+      </nav>
+      <a href="#contact" class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-sm transition">
+        Nhận Tư Vấn AI
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="max-w-4xl mx-auto px-4 pt-20 pb-16 text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mb-6">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      Bình dân hóa AI cho Chủ Shop & Làm Content
+    </div>
+    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+      Biến AI thành <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Cỗ Máy Sản Xuất</span> Nội Dung & Vận Hành
+    </h1>
+    <p class="text-zinc-400 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+      Không lý thuyết sáo rỗng. Đây là nơi tổng hợp toàn bộ <b>Prompt mẫu, Quy trình tự động hóa và Công cụ AI</b> đã được kiểm chứng thực tế để bạn copy và xài ngay trong 30 giây.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="#prompts" class="px-6 py-3 rounded-xl bg-white text-black font-semibold text-sm hover:bg-zinc-200 transition flex items-center gap-2">
+        <i data-lucide="sparkles" class="w-4 h-4"></i> Lấy Prompt Miễn Phí
+      </a>
+      <a href="#academy" class="px-6 py-3 rounded-xl glass text-white font-medium text-sm hover:bg-white/10 transition flex items-center gap-2">
+        <i data-lucide="play-circle" class="w-4 h-4 text-emerald-400"></i> Xem Lộ Trình Học
+      </a>
+    </div>
+  </section>
+
+  <!-- Prompt Library Section -->
+  <section id="prompts" class="max-w-6xl mx-auto px-4 py-12">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <h2 class="text-2xl font-bold mb-2 flex items-center gap-2">
+          <i data-lucide="terminal" class="w-6 h-6 text-emerald-400"></i> Kho Prompt "Mì Ăn Liền"
+        </h2>
+        <p class="text-zinc-400 text-sm">Bấm nút Copy, thay thông tin sản phẩm của bạn vào ngoặc vuông [...] là chạy ra kết quả.</p>
+      </div>
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap gap-2" id="filters">
+        <button onclick="filterPrompts('all', this)" class="filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-medium bg-emerald-500 text-black transition">Tất cả</button>
+        <button onclick="filterPrompts('video', this)" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium glass text-zinc-300 hover:text-white transition">Kịch bản Video</button>
+        <button onclick="filterPrompts('image', this)" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium glass text-zinc-300 hover:text-white transition">Tạo Ảnh Sản Phẩm</button>
+        <button onclick="filterPrompts('social', this)" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium glass text-zinc-300 hover:text-white transition">Viết Bài Bán Hàng</button>
+      </div>
+    </div>
+
+    <!-- Prompt Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="prompt-grid">
+      
+      <!-- Card 1 -->
+      <div class="prompt-card glass rounded-2xl p-5 flex flex-col justify-between card-hover" data-category="video">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-medium">Kịch bản TikTok/Reels</span>
+            <span class="text-xs text-zinc-500">Claude / Gemini</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Voice-over Kể Chuyện Đời Thường</h3>
+          <p class="text-zinc-400 text-xs mb-4">Giúp viết lời bình video ngắn tự nhiên như đang tâm sự, tránh tuyệt đối văn phong sáo rỗng của AI.</p>
+          <div class="bg-black/60 border border-white/5 rounded-xl p-3 mb-4 text-xs text-zinc-300 font-mono h-32 overflow-y-auto" id="p1">Hãy viết kịch bản voice-over dài 45 giây cho sản phẩm [Tên sản phẩm]. Yêu cầu: Giọng văn đời thường, gần gũi như đang kể chuyện cho bạn bè nghe, câu ngắn gọn. Mở đầu bằng một tình huống thực tế khách hay gặp phải, không dùng từ ngữ quảng cáo quá đà như "siêu phẩm" hay "đỉnh cao".</div>
+        </div>
+        <button onclick="copyPrompt('p1', this)" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-emerald-500 hover:text-black border border-white/10 font-medium text-xs transition flex items-center justify-center gap-2">
+          <i data-lucide="copy" class="w-4 h-4"></i> <span>Copy Prompt</span>
+        </button>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="prompt-card glass rounded-2xl p-5 flex flex-col justify-between card-hover" data-category="image">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 text-xs font-medium">Visual Thương Mại</span>
+            <span class="text-xs text-zinc-500">Midjourney / Gemini</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Chụp Sản Phẩm Concept Tối Giản</h3>
+          <p class="text-zinc-400 text-xs mb-4">Tạo bối cảnh thiên nhiên cây cỏ, ánh sáng dịu nhẹ, đặt sản phẩm nổi bật ở chính giữa khung hình 9:16.</p>
+          <div class="bg-black/60 border border-white/5 rounded-xl p-3 mb-4 text-xs text-zinc-300 font-mono h-32 overflow-y-auto" id="p2">Commercial product photography of [Mô tả sản phẩm], centered composition, minimalist concept with natural greenery and botanical shadows in the background, soft diffused studio lighting, matte texture, high-end aesthetic, aspect ratio 9:16, photorealistic 4K.</div>
+        </div>
+        <button onclick="copyPrompt('p2', this)" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-emerald-500 hover:text-black border border-white/10 font-medium text-xs transition flex items-center justify-center gap-2">
+          <i data-lucide="copy" class="w-4 h-4"></i> <span>Copy Prompt</span>
+        </button>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="prompt-card glass rounded-2xl p-5 flex flex-col justify-between card-hover" data-category="social">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-medium">Facebook Caption</span>
+            <span class="text-xs text-zinc-500">Mọi mô hình AI</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">5 Câu Hook Giật Tít Chạm Nỗi Đau</h3>
+          <p class="text-zinc-400 text-xs mb-4">Tạo nhanh 5 câu mở đầu bài viết hoặc 3 giây đầu video khiến khách hàng mục tiêu phải dừng lại đọc.</p>
+          <div class="bg-black/60 border border-white/5 rounded-xl p-3 mb-4 text-xs text-zinc-300 font-mono h-32 overflow-y-auto" id="p3">Khách hàng của tôi là [Đối tượng khách hàng] đang gặp vấn đề [Nỗi đau/Vấn đề]. Hãy viết cho tôi 5 câu Hook mở đầu ngắn dưới 15 chữ, đi thẳng vào vấn đề, đánh trúng tâm lý tò mò hoặc sợ sai lầm, dùng ngôn ngữ nói tự nhiên của người Việt.</div>
+        </div>
+        <button onclick="copyPrompt('p3', this)" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-emerald-500 hover:text-black border border-white/10 font-medium text-xs transition flex items-center justify-center gap-2">
+          <i data-lucide="copy" class="w-4 h-4"></i> <span>Copy Prompt</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tools / Bento Section -->
+  <section id="workflows" class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+      <i data-lucide="cpu" class="w-6 h-6 text-emerald-400"></i> Hệ Sinh Thái Công Cụ Đang Dùng
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="glass p-5 rounded-2xl md:col-span-2 card-hover">
+        <div class="text-emerald-400 text-xs font-semibold mb-1">TRỢ LÝ NGÔN NGỮ & LOGIC</div>
+        <h3 class="font-bold text-lg mb-2">Claude & Gemini Pro</h3>
+        <p class="text-zinc-400 text-xs leading-relaxed">Bộ đôi chủ lực để lên chiến lược nội dung, viết kịch bản giọng văn đời thường không mùi AI và phân tích dữ liệu dự án dài.</p>
+      </div>
+      <div class="glass p-5 rounded-2xl card-hover">
+        <div class="text-cyan-400 text-xs font-semibold mb-1">TỰ ĐỘNG HÓA</div>
+        <h3 class="font-bold text-lg mb-2">Codex & Antigravity</h3>
+        <p class="text-zinc-400 text-xs leading-relaxed">Điều phối Subagents tự động cắt dựng video, đăng bài đa kênh và chạy kịch bản trình duyệt.</p>
+      </div>
+      <div class="glass p-5 rounded-2xl card-hover">
+        <div class="text-purple-400 text-xs font-semibold mb-1">HÌNH ẢNH & VIDEO</div>
+        <h3 class="font-bold text-lg mb-2">AI Studio & CapCut</h3>
+        <p class="text-zinc-400 text-xs leading-relaxed">Dựng phối cảnh 3D sản phẩm, đồng bộ ánh sáng studio và hoàn thiện video ngắn tốc độ cao.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="border-t border-white/5 mt-16 py-10 text-center text-xs text-zinc-500">
+    <p class="mb-2 text-zinc-300 font-medium">Xây dựng bởi Cộng đồng Ứng dụng AI Thực Chiến</p>
+    <p>© 2026 Chia sẻ kiến thức AI ứng dụng cho Content, Marketing & Tự động hóa doanh nghiệp.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    function copyPrompt(id, btn) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text);
+      const span = btn.querySelector('span');
+      const originalText = span.innerText;
+      span.innerText = 'Đã Copy thành công!';
+      btn.classList.add('bg-emerald-500', 'text-black');
+      setTimeout(() => {
+        span.innerText = originalText;
+        btn.classList.remove('bg-emerald-500', 'text-black');
+      }, 2000);
+    }
+
+    function filterPrompts(category, activeBtn) {
+      const cards = document.querySelectorAll('.prompt-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (activeBtn) {
+        const buttons = document.querySelectorAll('.filter-btn');
+        buttons.forEach(btn => {
+          btn.classList.remove('bg-emerald-500', 'text-black', 'active');
+          btn.classList.add('glass', 'text-zinc-300');
+        });
+        activeBtn.classList.remove('glass', 'text-zinc-300');
+        activeBtn.classList.add('bg-emerald-500', 'text-black', 'active');
+      }
+    }
+  </script>
+</body>
+</html>
